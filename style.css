@@ -1,4 +1,4 @@
-/* Import Google font - Poppins */
+/* Importar tipo de letra do Google - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 * {
   margin: 0;
@@ -11,7 +11,9 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
- 
+  background: #606c88;
+  background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);
+  background: linear-gradient(to right, #3f4c6b, #606c88);
 }
 .css-selector {
     background: linear-gradient(236deg, #4a00c5, #000000);
@@ -46,9 +48,10 @@ body {
 
 .container {
   width: 450px;
-  background: #fff;
+  background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  
 }
 .container h2 {
   font-weight: 600;

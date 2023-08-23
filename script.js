@@ -6,7 +6,7 @@ const lengthSlider = document.querySelector(".pass-length input"),
   generateBtn = document.querySelector(".generate-btn");
 
 const characters = {
-  // object of letters, numbers & symbols
+  // objeto de letras, números e símbolos
   lowercase: "abcdefghijklmnopqrstuvwxyz",
   uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
   numbers: "0123456789",
@@ -20,45 +20,38 @@ const generatePassword = () => {
     passLength = lengthSlider.value;
 
   options.forEach((option) => {
-    // looping through each option's checkbox
+    // percorrer as caixas de verificação de cada opção
     if (option.checked) {
-      // if checkbox is checked
-      // if checkbox id isn't exc-duplicate && spaces
       if (option.id !== "exc-duplicate" && option.id !== "spaces") {
-        // adding particular key value from character object to staticPassword
+       // adição de um valor-chave específico do objeto de carácter a staticPassword
         staticPassword += characters[option.id];
       } else if (option.id === "spaces") {
         // if checkbox id is spaces
-        staticPassword += `  ${staticPassword}  `; // adding space at the beginning & end of staticPassword
+        staticPassword += `  ${staticPassword}  `; // adicionar espaço no início e no fim de staticPassword
       } else {
-        // else pass true value to excludeDuplicate
+        // senão passa um valor verdadeiro para excludeDuplicate
         excludeDuplicate = true;
       }
     }
   });
 
   for (let i = 0; i < passLength; i++) {
-    // getting random character from the static password
     let randomChar =
       staticPassword[Math.floor(Math.random() * staticPassword.length)];
     if (excludeDuplicate) {
-      // if excludeDuplicate is true
-      // if randomPassword doesn't contains the current random character or randomChar is equal
-      // to space " " then add random character to randomPassword else decrement i by -1
       !randomPassword.includes(randomChar) || randomChar == " "
         ? (randomPassword += randomChar)
         : i--;
     } else {
-      // else add random character to randomPassword
       randomPassword += randomChar;
     }
   }
-  passwordInput.value = randomPassword; // passing randomPassword to passwordInput value
+  passwordInput.value = randomPassword;
 };
 
 const upadatePassIndicator = () => {
-  // if lengthSlider value is less than 8 then pass "weak" as passIndicator id else if lengthSlider
-  // value is less than 16 then pass "medium" as id else pass "strong" as id
+// se o valor de lengthSlider for inferior a 8, então passa "weak" como id do passIndicator senão se lengthSlider
+  // o valor é inferior a 16 então passa "medium" como id else passa "strong" como id
   passIndicator.id =
     lengthSlider.value <= 8
       ? "weak"
@@ -68,7 +61,7 @@ const upadatePassIndicator = () => {
 };
 
 const updateSlider = () => {
-  // passing slider value as counter text
+// passar o valor do seletor como texto do contador
   document.querySelector(".pass-length span").innerText = lengthSlider.value;
   generatePassword();
   upadatePassIndicator();
